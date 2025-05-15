@@ -21,3 +21,22 @@ function eliminarPrimerElemento() {
 
     }
 }
+
+// Función para borrar un elemento de la lista según la posición ingresada por el usuario
+function borrarElemento() {
+    let lista = document.getElementById("lista"); // Obtiene la lista de productos
+    let posicion = Number(document.getElementById("posicionElemento").value) - 1; // Obtiene la posición ingresada y ajusta para que empiece desde 1
+
+    // Verifica que la posición ingresada sea válida (dentro del rango de la lista)
+    if (posicion >= 0 && posicion < lista.children.length) {
+        lista.removeChild(lista.children[posicion]); // Elimina el elemento en la posición indicada
+        actualizarMensaje(`Elemento en posición ${posicion + 1} eliminado.`); // Muestra un mensaje indicando qué elemento fue eliminado
+    } else {
+        actualizarMensaje("Posición inválida."); // Mensaje de error si la posición no es válida
+    }
+}
+
+// Función para actualizar el mensaje en pantalla con la acción realizada
+function actualizarMensaje(texto) {
+    document.getElementById("mensaje").textContent = texto; // Muestra el texto de actualización en el párrafo de mensajes
+}
